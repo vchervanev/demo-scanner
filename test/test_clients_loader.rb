@@ -1,11 +1,11 @@
 require 'minitest/autorun'
-require 'client_loader'
-class TestClientLoader < Minitest::Test
+require 'clients_loader'
+class TestClientsLoader < Minitest::Test
   EXPECTED_TEST_OUTPUT = "200: First Near\n".freeze
   TEST_FILE_NAME = 'test/test_valid_customers.jsons'.freeze
 
   def test_conditional_loading
-    result = ClientLoader.filter(TEST_FILE_NAME) do |client|
+    result = ClientsLoader.filter(TEST_FILE_NAME) do |client|
       client.id == 200
     end
 

@@ -19,6 +19,8 @@ class TestOrthodromicDistance < Minitest::Test
     loc2 = [0, Math::PI]
     r = 1
     assert_equal Math::PI,
-                 OrthodromicDistance.calculate(loc1, loc2, r, OrthodromicDistance::RADIANS)
+                 OrthodromicDistance.calculate(
+                   loc1, loc2, r, OrthodromicDistance::RADIANS
+                 )
   end
 end

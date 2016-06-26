@@ -2,13 +2,32 @@ require 'minitest/autorun'
 require 'client_builder'
 class TestClientBuilder < Minitest::Test
   VALID_JSON =
-    '{"latitude": "50.0", "user_id": 100, "name": "Far away", "longitude": "0"}'.freeze
+    '{
+      "latitude": "50.0",
+      "user_id": 100,
+      "name": "Far away",
+      "longitude": "0"
+    }'.freeze
   INVALID_JSON =
-    '"latitude": "50.0", "user_id": 100, "name": "Far away", "longitude": "0"}'.freeze
+    '
+      "latitude": "50.0",
+      "user_id": 100,
+      "name": "Far away",
+      "longitude": "0"
+    }'.freeze
   INCOMPLETE_JSON =
-    '{"latitude": "50.0", "user_id": 100, "name": "Far away" }'.freeze
+    '{
+      "latitude": "50.0",
+      "user_id": 100,
+      "name": "Far away"
+    }'.freeze
   INVALID_FLOAT_JSON =
-    '{"latitude": "50a0", "user_id": 100, "name": "Far away" }'.freeze
+    '{
+      "latitude": "50a0",
+      "user_id": 100,
+      "name": "Far away",
+      "longitude": "0"
+    }'.freeze
 
   def test_positive
     c = ClientBuilder.from_json(VALID_JSON)

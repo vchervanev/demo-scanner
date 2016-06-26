@@ -1,8 +1,7 @@
 require 'file_processor'
-require 'distance_from_dublin'
 require 'client_builder'
-# loads and filters data based on file name and optional filtering block
-module ClientLoader
+# loads and filters data based on file name and filtering block
+module ClientsLoader
   def self.filter(file_name)
     [].tap do |result|
       FileProcessor.run(file_name) do |text|

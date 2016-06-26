@@ -2,15 +2,16 @@
 
 $LOAD_PATH.unshift('lib')
 
-require 'client_loader'
+require 'clients_loader'
+require 'clients_helper'
 
 if ARGV.length != 1
   print 'Invalid parameters. Use: "./scan data/customers.jsons"', "\n"
   exit(1)
 end
 
-close_clients = ClientLoader.filter(ARGV[0]) do |client|
-  DistanceFromDublin.to(client.location) < 100
+close_clients = ClientsLoader.filter(ARGV[0]) do |client|
+  ClientsHelper.close_to_dublin?(client, 100)
 end
 
-print close_clients.sort_by(&:id).join("\n"), "\n"
+print ClientsHelper.sort_by_id(close_clients).join("\n"), "\n"
